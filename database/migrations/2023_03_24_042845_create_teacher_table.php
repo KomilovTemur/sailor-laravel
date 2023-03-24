@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('teacher', function (Blueprint $table) {
             $table->id();
-            $table->string("name")->nullable();
+            $table->string("name");
+            $table->string("address");
             $table->string("science")->default('chemistry');
-            $table->text("desc");
-            $table->integer("email")->unique();
+            $table->string("email")->unique();
+            $table->integer("phone")->unsigned();
+            $table->integer("status")->default(1);
             $table->timestamps();
         });
     }
