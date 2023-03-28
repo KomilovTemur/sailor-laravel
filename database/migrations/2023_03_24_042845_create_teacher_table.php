@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("address");
             $table->string("science")->default('chemistry');
             $table->string("email")->unique();
-            $table->integer("phone")->unsigned();
+            $table->string("phone");
             $table->integer("status")->default(1);
             $table->timestamps();
         });
