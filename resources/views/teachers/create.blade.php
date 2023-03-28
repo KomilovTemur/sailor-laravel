@@ -46,12 +46,10 @@
             <td>{{ $one->phone }}</td>
             <td>{{ $one->status }}</td>
             <td>
-              <a href="/edit
-              
-              /{{$one->id}}" class="btn btn-success">
+              <a href="/edit/{{ $one->id }}" class="btn btn-success">
                 Edit
               </a>
-              <a href="/delete/{{$one->id}}" class="btn btn-danger">
+              <a href="/delete/{{ $one->id }}" class="btn btn-danger">
                 Delete
               </a>
             </td>
