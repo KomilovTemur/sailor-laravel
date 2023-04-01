@@ -1,23 +1,28 @@
 <?php
 
-use App\Http\Controllers\SiteController;
-use App\Http\Controllers\TeacherController;
-use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\SiteController;
+    use App\Http\Controllers\TeacherController;
+    use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | Web Routes
+    |--------------------------------------------------------------------------
+    |
+    | Here is where you can register web routes for your application. These
+    | routes are loaded by the RouteServiceProvider and all of them will
+    | be assigned to the "web" middleware group. Make something great!
+    |
+    */
 
-Route::get('/', [SiteController::class, 'index'])->name('index');
-Route::get('/about', [SiteController::class, 'about'])->name('about');
-Route::get('/portfolio', [SiteController::class, 'portfolio'])->name('portfolio');
+    Route::get('/', [SiteController::class, 'index'])->name('index');
+    Route::get('/about', [SiteController::class, 'about'])->name('about');
+    Route::get('/portfolio', [SiteController::class, 'portfolio'])->name('portfolio');
 
-Route::get("teacher", [TeacherController::class, "create"])->name("teacher");
-Route::post("teachers", [TeacherController::class, "store"])->name("store");
+
+    Route::resource('/teacher', TeacherController::class);
+
+    /*
+    Route::get("teacher", [TeacherController::class, "create"])->name("teacher");
+    Route::post("teachers", [TeacherController::class, "store"])->name("store");
+    */
