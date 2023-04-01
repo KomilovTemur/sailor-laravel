@@ -15,10 +15,11 @@ class Teacher extends Model
     protected $fillable = [
         "name",
         "address",
+        "science",
         "email",
-        "phone"        
+        "phone"
     ];
 
     // hammasini oladi
-    protected $guarded = [];
-} 
+//    protected $guarded = [];
+}
