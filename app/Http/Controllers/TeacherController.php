@@ -48,7 +48,8 @@
          */
         public function show(string $id)
         {
-            //
+            $teacher = Teacher::findOrFail($id);
+            return view('teachers.show', ['teacher' => $teacher]);
         }
 
         /**
