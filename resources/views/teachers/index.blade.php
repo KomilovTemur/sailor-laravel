@@ -28,7 +28,7 @@
                 <td>{{ $teacher->phone }}</td>
                 <td>{{ $teacher->science }}</td>
                 <td>
-                    <a href="#" class="btn btn-info">View</a>
+                    <a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-info">View</a>
                     <a href="#" class="btn btn-warning">Edit</a>
                     <a href="#" class="btn btn-danger">Delete</a>
                 </td>
