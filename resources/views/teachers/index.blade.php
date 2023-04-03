@@ -1,5 +1,8 @@
 @extends('layouts/crud')
 @section('content')
+    @if($massage = Session::get('success'))
+        <div class="alert alert-success">{{ $massage }}</div>
+    @endif
     <div class="d-flex align-items-center justify-content-between py-5">
         <h2>Teachers</h2>
         <div class="col-lg-2">
@@ -27,10 +30,16 @@
                 <td>{{ $teacher->email }}</td>
                 <td>{{ $teacher->phone }}</td>
                 <td>{{ $teacher->science }}</td>
-                <td>
+                <td class="d-flex">
                     <a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-info">View</a>
-                    <a href="#" class="btn btn-warning">Edit</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-warning mx-2">Edit</a>
+                    <form action="{{ route("teacher.destroy", $teacher->id) }}" method="post">
+                        @csrf
+                        @method("delete")
+                        <button class="btn btn-danger" onclick="!confirm('O\'chirishni xohlaysizmi?')" type="submit">
+                            Delete
+                        </button>
+                    </form>
                 </td>
             </tr>
         @endforeach
