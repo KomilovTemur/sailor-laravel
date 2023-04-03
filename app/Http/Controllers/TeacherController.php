@@ -77,11 +77,12 @@
 
         /**
          * Remove the specified resource from storage.
-         */
+        */
         public function destroy(string $id)
         {
             $teacher = Teacher::findOrFail($id);
             $teacher->delete();
-            return redirect()->route('teacher.index');
+            return redirect()->route('teacher.index')
+                ->with("success", "$teacher->name is deleted");
         }
     }

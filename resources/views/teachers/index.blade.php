@@ -33,13 +33,13 @@
                 <td>{{ $teacher->email }}</td>
                 <td>{{ $teacher->phone }}</td>
                 <td>{{ $teacher->science }}</td>
-                <td class="d-flex">
+                <td class="d-flex gap-2">
                     <a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-info">View</a>
-                    <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-warning mx-2">Edit</a>
+                    <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-warning">Edit</a>
                     <form action="{{ route("teacher.destroy", $teacher->id) }}" method="post">
                         @csrf
                         @method("delete")
-                        <button class="btn btn-danger" onclick="!confirm('O\'chirishni xohlaysizmi?')" type="submit">
+                        <button class="btn btn-danger" type="submit">
                             Delete
                         </button>
                     </form>
