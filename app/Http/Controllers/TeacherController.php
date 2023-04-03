@@ -49,6 +49,9 @@
         public function show(string $id)
         {
             $teacher = Teacher::findOrFail($id);
+            if ($teacher == null) {
+                return redirect()->route('teacher.index')->with("error", "Teacher not find");
+            }
             return view('teachers.show', ['teacher' => $teacher]);
         }
 

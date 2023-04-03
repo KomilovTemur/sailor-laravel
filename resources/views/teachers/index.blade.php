@@ -3,6 +3,9 @@
     @if($massage = Session::get('success'))
         <div class="alert alert-success">{{ $massage }}</div>
     @endif
+    @if($massage = Session::get('error'))
+        <div class="alert alert-danger">{{ $massage }}</div>
+    @endif
     <div class="d-flex align-items-center justify-content-between py-5">
         <h2>Teachers</h2>
         <div class="col-lg-2">

@@ -1,7 +1,6 @@
 @extends('layouts/crud')
 
 @section('content')
-    {{ $teacher }}
     <form action="{{ route("teacher.update", $teacher->id) }}" method="post">
         @csrf
         @method('PUT')
