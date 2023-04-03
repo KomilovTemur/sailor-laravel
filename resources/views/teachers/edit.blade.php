@@ -10,5 +10,6 @@
         <input class="form-control my-2" placeholder="email" type="text" name="email" value="{{ $teacher->email }}">
         <input class="form-control mb-2" placeholder="phone" type="number" name="phone" value="{{ $teacher->phone }}">
         <button type="submit" class="btn btn-success">Submit</button>
+        <a href="{{ route("teacher.index") }}" class="btn btn-info">Go Back</a>
     </form>
 @endsection

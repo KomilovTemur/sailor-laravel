@@ -57,7 +57,7 @@
 
         /**
          * Show the form for editing the specified resource.
-        */
+         */
         public function edit(string $id)
         {
             $teacher = Teacher::findOrFail($id);
@@ -71,7 +71,8 @@
         {
             $teacher = Teacher::findOrFail($id);
             $teacher->update($request->all());
-            return redirect()->route('teacher.index')->with("success", "$teacher->name's data has been updated ");
+            return redirect()->route('teacher.index')
+                ->with("success", "$teacher->name's data has been updated ");
         }
 
         /**
