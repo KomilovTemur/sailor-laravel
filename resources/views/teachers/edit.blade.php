@@ -5,7 +5,6 @@
         @csrf
         @method('PUT')
         <input class="form-control" placeholder="name" type="text" name="name" value="{{ $teacher->name }}">
-        <input name="hidden_id" type="hidden" value="{{ $teacher->id }}">
         <input class="form-control my-2" placeholder="address" type="text" name="address" value="{{ $teacher->address }}">
         <input class="form-control" placeholder="science" type="text" name="science" value="{{ $teacher->science }}">
         <input class="form-control my-2" placeholder="email" type="text" name="email" value="{{ $teacher->email }}">

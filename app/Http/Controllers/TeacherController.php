@@ -69,7 +69,7 @@
          */
         public function update(Request $request, string $id)
         {
-            $teacher = Teacher::find($request->hidden_id);
+            $teacher = Teacher::findOrFail($id);
             $teacher->update($request->all());
             return redirect()->route('teacher.index')->with("success", "$teacher->name's data has been updated ");
         }
