@@ -54,10 +54,11 @@
 
         /**
          * Show the form for editing the specified resource.
-         */
+        */
         public function edit(string $id)
         {
-            //
+            $teacher = Teacher::findOrFail($id);
+            return view("teachers.edit", ['teacher' => $teacher]);
         }
 
         /**
@@ -65,7 +66,9 @@
          */
         public function update(Request $request, string $id)
         {
-            //
+            $teacher = Teacher::find($request->hidden_id);
+            $teacher->update($request->all());
+            return redirect()->route('teacher.index')->with("success", "$teacher->name's data has been updated ");
         }
 
         /**
@@ -73,6 +76,8 @@
          */
         public function destroy(string $id)
         {
-            //
+            $teacher = Teacher::findOrFail($id);
+            $teacher->delete();
+            return redirect()->route('teacher.index');
         }
     }
