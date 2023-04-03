@@ -39,7 +39,8 @@
                     <form action="{{ route("teacher.destroy", $teacher->id) }}" method="post">
                         @csrf
                         @method("delete")
-                        <button class="btn btn-danger" type="submit">
+                        <button onclick="return confirm('O\'chirishni xoxlaysizmi')" class="btn btn-danger"
+                                type="submit">
                             Delete
                         </button>
                     </form>

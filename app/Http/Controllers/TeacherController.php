@@ -39,6 +39,14 @@
             //$teacher->email = $request->email;
             //$teacher->phone = $request->phone;
             //$teacher->save();
+            $request->validate([
+                'name' => 'required',
+                'address' => 'required',
+                'scinese' => 'required',
+                'email' => 'required',
+                'phone' => 'required'
+            ]);
+
             Teacher::create($request->all());
             return redirect()->route('teacher.index');
         }
