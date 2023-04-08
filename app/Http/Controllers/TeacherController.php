@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Http\Requests\TeacherStoreRequest;
     use App\Models\Teacher;
     use Illuminate\Http\Request;
 
@@ -30,33 +31,26 @@
         /**
          * Store a newly created resource in storage.
          */
-        public function store(Request $request)
+        public function store(TeacherStoreRequest $request)
         {
-            //$teacher = new Teacher;
-            //$teacher->name = $request->name;
-            //$teacher->address = $request->address;
-            //$teacher->science = $request->science;
-            //$teacher->email = $request->email;
-            //$teacher->phone = $request->phone;
-            //$teacher->save();
-            $request->validate([
-                'name' => 'required',
-                'address' => 'required',
-                'scinese' => 'required',
-                'email' => 'required',
-                'phone' => 'required'
-            ]);
+            $requestData = $request->all();
+            if ($request->hasFile('image')) {
 
-            Teacher::create($request->all());
+                $imageName = time() . "." . request()->image->getClientOriginalExtension();
+                $request->image->move(public_path('images'), $imageName);
+                $requestData['image'] = $imageName;
+            }
+//            dd($requestData);
+            Teacher::create($requestData);
             return redirect()->route('teacher.index');
         }
 
         /**
          * Display the specified resource.
          */
-        public function show(string $id)
+        public function show(Teacher $teacher)
         {
-            $teacher = Teacher::findOrFail($id);
+            $teacher = Teacher::findOrFail($teacher->id);
             if ($teacher == null) {
                 return redirect()->route('teacher.index')->with("error", "Teacher not find");
             }
@@ -77,6 +71,13 @@
          */
         public function update(Request $request, string $id)
         {
+            $request->validate([
+                'name' => 'required',
+                'address' => 'required',
+                'science' => 'required',
+                'email' => 'required|email',
+                'phone' => 'required'
+            ]);
             $teacher = Teacher::findOrFail($id);
             $teacher->update($request->all());
             return redirect()->route('teacher.index')
@@ -85,7 +86,7 @@
 
         /**
          * Remove the specified resource from storage.
-        */
+         */
         public function destroy(string $id)
         {
             $teacher = Teacher::findOrFail($id);
