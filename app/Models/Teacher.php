@@ -17,7 +17,8 @@ class Teacher extends Model
         "address",
         "science",
         "email",
-        "phone"
+        "phone",
+        "image"
     ];
 
     // hammasini oladi
