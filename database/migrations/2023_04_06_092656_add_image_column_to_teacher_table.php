@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('teacher', function (Blueprint $table) {
-            //
+            $table->string('image')->nullable()->default('default.png');
         });
     }
 
