@@ -21,6 +21,7 @@
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
             <th scope="col">Science</th>
+            <th scope="col">Image</th>
             <th scope="col">Actions</th>
         </tr>
         </thead>
@@ -33,6 +34,9 @@
                 <td>{{ $teacher->email }}</td>
                 <td>{{ $teacher->phone }}</td>
                 <td>{{ $teacher->science }}</td>
+                <td>
+                    <img style="width: 40px" src="{{ asset('images') . "/" . $teacher->image }}" alt="{{$teacher->name}}">
+                </td>
                 <td class="d-flex gap-2">
                     <a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-info">View</a>
                     <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-warning">Edit</a>
