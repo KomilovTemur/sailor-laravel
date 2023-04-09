@@ -90,6 +90,14 @@
         public function destroy(string $id)
         {
             $teacher = Teacher::findOrFail($id);
+            if (($teacher->image != "default.png")) {
+                $status = @unlink( public_path('images/' . $teacher->image));
+                if (!$status) {
+                    return redirect()->route('teacher.index')
+                    ->with("error", "can not delete $teacher->image");
+                }
+            }
+           
             $teacher->delete();
             return redirect()->route('teacher.index')
                 ->with("success", "$teacher->name is deleted");
