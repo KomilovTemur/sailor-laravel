@@ -10,11 +10,7 @@
     @include('sections.clients')
     @include('sections.services')
     @include('sections.portfolio')
-
-   
-
-   
-
+    
   </main>
   <!-- End #main -->
 @endsection
