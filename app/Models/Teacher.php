@@ -22,5 +22,5 @@ class Teacher extends Model
     ];
 
     // hammasini oladi
-//    protected $guarded = [];
+    //    protected $guarded = [];
 }
