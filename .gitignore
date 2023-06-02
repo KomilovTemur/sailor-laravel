@@ -17,5 +17,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-.env.example
-otika-bootstrap-admin-template

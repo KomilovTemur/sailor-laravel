@@ -1,46 +1,24 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiteController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/', [SiteController::class, 'index'])->name('index');
+Route::get('/about', [SiteController::class, 'about'])->name('about');
+Route::get('/services', [SiteController::class, 'services'])->name('services');
+Route::get('/portfolio', [SiteController::class, 'portfolio'])->name('portfolio');
+Route::get('/pricing', [SiteController::class, 'pricing'])->name('pricing');
+Route::get('/blog', [SiteController::class, 'blog'])->name('blog');
+Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-Route::get('/portfolio', function () {
-    return view('portfolio');
-})->name('portfolio');
-
-
-
-
-
-
-
-route::resource('/teacher', TeacherController::class);
-
-
-
-
-
-
-Route::get('/admin/dashboard', function () {
+Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard/add', function () {
+    return view('admin.add');
+})->middleware(['auth', 'verified'])->name('dashboard.add');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -48,4 +26,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
