@@ -40,14 +40,19 @@
                     <div class="invalid-feedback">
                       Please fill in your email
                     </div>
+                    <div class="invalid-feedback">
+                    </div>
                   </div>
                   <div class="form-group">
                     <div class="d-block">
                       <label for="password" class="control-label">Password</label>
                       <div class="float-right">
-                        <a href="auth-forgot-password.html" class="text-small">
-                          Forgot Password?
-                        </a>
+                        @if (Route::has('password.request'))
+                          <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            href="{{ route('password.request') }}">
+                            {{ __('Forgot your password?') }}
+                          </a>
+                        @endif
                       </div>
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
@@ -63,12 +68,6 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    @if (Route::has('password.request'))
-                      <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                      </a>
-                    @endif
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                       Login
                     </button>
