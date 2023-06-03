@@ -200,14 +200,13 @@
               <a href="{{ route('dashboard') }}" class="nav-link"><i
                   data-feather="monitor"></i><span>Dashboard</span></a>
             <li class="menu-header">Widgets</li>
-            <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="map"></i><span>Google
-                  Maps</span></a>
-              <ul class="dropdown-menu">
-                <li><a href="gmaps-advanced-route.html">Advanced Route</a></li>
-                <li><a href="gmaps-draggable-marker.html">Draggable Marker</a></li>
-                <li><a href="gmaps-geocoding.html">Geocoding</a></li>
-              </ul>
+            <li class="">
+              <a href="{{ route('phones.index') }}" class="menu-toggle nav-link"><i data-feather="phone"></i><span>
+                  Phones</span></a>
+            </li>
+            <li class="">
+              <a href="{{ route('users.index') }}" class="menu-toggle nav-link"><i data-feather="users"></i><span>
+                  Users</span></a>
             </li>
           </ul>
         </aside>
