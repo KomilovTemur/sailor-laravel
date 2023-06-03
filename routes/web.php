@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\PhonesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
+
 
 Route::get('/', [SiteController::class, 'index'])->name('index');
 Route::get('/about', [SiteController::class, 'about'])->name('about');
@@ -26,4 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::resource('users', UsersController::class);
+Route::resource('phones', PhonesController::class);
+
+require __DIR__ . '/auth.php';
