@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\Phones;
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PhonesController extends Controller
+class PostContoller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $phones = Phones::all();
-        return view('admin.phones.index', compact('phones'));
+        $posts = Post::all();
+        return view("admin.posts.index", compact('posts'));
     }
 
     /**
@@ -22,8 +23,8 @@ class PhonesController extends Controller
      */
     public function create()
     {
-        $users = User::doesntHave('phone')->get();
-        return view('admin.phones.createPhone', compact('users'));
+        $categories = Category::all();
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -32,11 +33,14 @@ class PhonesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'phone' => "integer|required|unique:phones",
-            'user_id' => "integer|required",
+            'title',
+            'body',
+            'category_id',
+            'image',
+            'slug',
         ]);
-        Phones::create($request->all());
-        return redirect()->route('admin.phones.index');
+        Post::create($request->all());
+        return redirect()->route('admin.posts.index');
     }
 
     /**
