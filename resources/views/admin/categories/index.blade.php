@@ -4,35 +4,32 @@
 @endsection
 @section('content')
 @section('title')
-  Users
+  Categories
 @endsection
 <div class="row">
   <div class="col-12">
     <div class="card">
-      <div class="card-header">
-        <h4>Simple Table</h4>
+      <div class="card-header d-flex justify-content-between">
+        <h4>Categories Table</h4>
+        <a href="{{ route('admin.categories.create') }}" class="ml-2 btn btn-success">Create category</a>
       </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-bordered table-md">
             <tbody>
               <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Email</th>
+                <th>id</th>
+                <th>name</th>
                 <th>Action</th>
               </tr>
-              @foreach ($users as $user)
+              @foreach ($categories as $category)
                 <tr>
-                  <td>{{ $user->id }}</td>
-                  <td>{{ $user->name }}</td>
-                  <td>{{ $user->phone->phone ?? 'not connected' }}</td>
-                  <td>{{ $user->email }}</td>
-                  <td><a href="#" class="btn btn-primary">Detail</a></td>
+                  <td>{{ $category->id }}</td>
+                  <td>{{ $category->name }}</td>
+                  <td><a href="{{ route('admin.categories.show', $category->id) }}" class="btn btn-primary">Detail</a>
+                  </td>
                 </tr>
               @endforeach
-
             </tbody>
           </table>
         </div>

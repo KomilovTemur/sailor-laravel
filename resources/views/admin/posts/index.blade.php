@@ -4,35 +4,42 @@
 @endsection
 @section('content')
 @section('title')
-  Users
+  Posts
 @endsection
 <div class="row">
   <div class="col-12">
     <div class="card">
-      <div class="card-header">
-        <h4>Simple Table</h4>
+      <div class="card-header d-flex justify-content-between">
+        <h4>Posts Table</h4>
+        <a href="{{ route('admin.posts.create') }}" class="ml-2 btn btn-success">Create Post</a>
       </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-bordered table-md">
             <tbody>
               <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Email</th>
+                <th>id</th>
+                <th>Title</th>
+                <th>Body</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th>Slug</th>
                 <th>Action</th>
               </tr>
-              @foreach ($users as $user)
+              @foreach ($posts as $post)
                 <tr>
-                  <td>{{ $user->id }}</td>
-                  <td>{{ $user->name }}</td>
-                  <td>{{ $user->phone->phone ?? 'not connected' }}</td>
-                  <td>{{ $user->email }}</td>
-                  <td><a href="#" class="btn btn-primary">Detail</a></td>
+                  <td>{{ $post->id }}</td>
+                  <td>{{ \Str::limit($post->title, 10) }}</td>
+                  <td>{{ \Str::limit($post->body, 30) }}</td>
+                  <td>{{ $post->category->name }}</td>
+                  <td>
+                    <img style="width: 50px" class="shadow rounded-sm" src="{{ $post->image }}"
+                      alt="{{ $post->title }}">
+                  </td>
+                  <td>{{ \Str::limit($post->slug, 10) }}</td>
+                  <td><a href="" class="btn btn-primary">Detail</a></td>
                 </tr>
               @endforeach
-
             </tbody>
           </table>
         </div>

@@ -194,21 +194,7 @@
                 class="header-logo" /> <span class="logo-name">Otika</span>
             </a>
           </div>
-          <ul class="sidebar-menu">
-            <li class="menu-header">Main</li>
-            <li class="dropdown active">
-              <a href="{{ route('dashboard') }}" class="nav-link"><i
-                  data-feather="monitor"></i><span>Dashboard</span></a>
-            <li class="menu-header">Widgets</li>
-            <li class="">
-              <a href="{{ route('phones.index') }}" class="menu-toggle nav-link"><i data-feather="phone"></i><span>
-                  Phones</span></a>
-            </li>
-            <li class="">
-              <a href="{{ route('users.index') }}" class="menu-toggle nav-link"><i data-feather="users"></i><span>
-                  Users</span></a>
-            </li>
-          </ul>
+          @yield('sidebar')
         </aside>
       </div>
       <!-- Main Content -->

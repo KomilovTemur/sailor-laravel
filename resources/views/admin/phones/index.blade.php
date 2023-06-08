@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('sidebar')
+  @include('layouts.sidebar')
+@endsection
 @section('content')
 @section('title')
   Phones
@@ -8,7 +11,7 @@
     <div class="card">
       <div class="card-header d-flex justify-content-between">
         <h4>Phones Table</h4>
-        <a href="{{ route('phones.create') }}" class="ml-2 btn btn-success">Create phone</a>
+        <a href="{{ route('admin.phones.create') }}" class="ml-2 btn btn-success">Create phone</a>
       </div>
       <div class="card-body">
         <div class="table-responsive">
