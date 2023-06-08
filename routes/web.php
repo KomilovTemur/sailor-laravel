@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\CategoriesContoller;
+use App\Http\Controllers\admin\PostContoller;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\PhonesController;
 use App\Http\Controllers\ProfileController;
@@ -29,7 +31,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('users', UsersController::class);
-Route::resource('phones', PhonesController::class);
+Route::prefix('admin')->name("admin.")->group(function () {
+    Route::resource('users', UsersController::class);
+    Route::resource('phones', PhonesController::class);
+    Route::resource('posts', PostContoller::class);
+    Route::resource('categories', CategoriesContoller::class);
+});
 
 require __DIR__ . '/auth.php';
