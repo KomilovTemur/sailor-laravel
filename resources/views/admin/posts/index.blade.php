@@ -40,7 +40,7 @@
                   <td class="d-grid gap-2">
                     <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-success">Show</a>
                     <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-info">Edit</a>
-                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post" class="d-inline">
                       @csrf
                       @method('delete')
                       <button onclick="return confirm('are you delete?')" type="submit" class="btn btn-danger">Delete
