@@ -37,8 +37,17 @@
                       alt="{{ $post->title }}">
                   </td>
                   <td>{{ \Str::limit($post->slug, 10) }}</td>
-                  <td><a href="" class="btn btn-primary">Detail</a></td>
-                </tr>
+                  <td class="d-grid gap-2">
+                    <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-success">Show</a>
+                    <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-info">Edit</a>
+                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+                      @csrf
+                      @method('delete')
+                      <button onclick="return confirm('are you delete?')" type="submit" class="btn btn-danger">Delete
+                      </button>
+                    </form>
+                  </td>
+                  <td>
               @endforeach
             </tbody>
           </table>

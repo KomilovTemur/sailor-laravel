@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostContoller extends Controller
@@ -24,7 +25,8 @@ class PostContoller extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        $tags = Tag::all();
+        return view('admin.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -39,7 +41,8 @@ class PostContoller extends Controller
             'image',
             'slug',
         ]);
-        Post::create($request->all());
+        $post = Post::create($request->except('tag_id'));
+        $post->tags()->attach($request->tag_id);
         return redirect()->route('admin.posts.index');
     }
 
@@ -48,7 +51,8 @@ class PostContoller extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -56,7 +60,10 @@ class PostContoller extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -64,7 +71,10 @@ class PostContoller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->tags()->sync($request->tag_id);
+        $post->update($request->all());
+        return redirect()->route('admin.posts.show', $id);
     }
 
     /**
@@ -72,6 +82,9 @@ class PostContoller extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->tags()->detach();
+        $post->delete();
+        return redirect()->route('admin.posts.index');
     }
 }
