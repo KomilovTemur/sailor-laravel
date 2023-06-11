@@ -165,7 +165,12 @@
                 src="{{ asset('adminAssets/img/user.png') }}" class="user-img-radious-style"> <span
                 class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-              <div class="dropdown-title">Hello Sarah Smith</div>
+              <div class="dropdown-title">Hello @if (auth()->check())
+                  {{ auth()->user()->name }}
+                @else
+                  not logged in
+                @endif
+              </div>
               <a href="profile.html" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profile
               </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>

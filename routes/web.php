@@ -29,13 +29,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::prefix('admin')->name("admin.")->group(function () {
+Route::prefix('admin')->name("admin.")->middleware('auth', 'checkadmin')->group(function () {
     Route::resource('users', UsersController::class);
     Route::resource('phones', PhonesController::class);
     Route::resource('posts', PostContoller::class);
     Route::resource('categories', CategoriesContoller::class);
-});
+})->name('admin.');
+
+Route::get('/lang/{lang}', function ($lang) {
+    session(['lang' => $lang]);
+    return redirect()->back();
+})->name('lang');
 
 require __DIR__ . '/auth.php';

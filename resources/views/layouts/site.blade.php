@@ -33,7 +33,6 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href={{ route('index') }}>Home</a></li>
-
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href={{ route('about') }} class="active">About</a></li>
@@ -47,8 +46,26 @@
           <li><a href={{ route('blog') }}>Blog</a></li>
 
           <li><a href={{ route('contact') }}>Contact</a></li>
-          <li><a href={{ route('index') }} class="getstarted">Get
-              Started</a></li>
+          <li class="dropdown"><a href="#"><span class="text-uppercase">{{ session('lang') ?? 'UZ' }}</span> <i
+                class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class="d-flex align-items-center justify-content-center">
+                <img src="{{ asset('assets/img/flags/uzbekistan.png') }}" alt="UZB"
+                  style="width: 25px; height: 25px">
+                <a href='/lang/uz'>UZ</a>
+              </li>
+              <li class="d-flex align-items-center justify-content-center">
+                <img src="{{ asset('assets/img/flags/united-kingdom.png') }}" alt="UZB"
+                  style="width: 25px; height: 25px">
+                <a href='/lang/en'>EN</a>
+              </li>
+              <li class="d-flex align-items-center justify-content-center">
+                <img src="{{ asset('assets/img/flags/russia.png') }}" alt="UZB" style="width: 25px; height: 25px">
+                <a href='/lang/ru'>RU</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href={{ route('index') }} class="getstarted">@lang('words.get_started')</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
