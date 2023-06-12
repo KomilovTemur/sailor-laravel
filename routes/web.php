@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\CategoriesContoller;
+use App\Http\Controllers\admin\LessionsController;
 use App\Http\Controllers\admin\PostContoller;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\UsersController;
@@ -37,6 +38,7 @@ Route::prefix('admin')->name("admin.")->middleware('auth', 'checkadmin')->group(
     Route::resource('posts', PostContoller::class);
     Route::resource('categories', CategoriesContoller::class);
     Route::resource('service', ServiceController::class);
+    Route::resource('lessons', LessionsController::class);
 })->name('admin.');
 
 Route::get('/lang/{lang}', function ($lang) {

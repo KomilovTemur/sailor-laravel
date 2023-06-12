@@ -23,4 +23,8 @@
     <a href="{{ route('admin.service.index') }}" class="menu-toggle nav-link"><i data-feather="compass"></i><span>
         Services</span></a>
   </li>
+  <li>
+    <a href="{{ route('admin.lessons.index') }}" class="menu-toggle nav-link"><i data-feather="compass"></i><span>
+        Lessons</span></a>
+  </li>
 </ul>

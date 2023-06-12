@@ -7,5 +7,7 @@ return [
   "portfolio" => "Portfolio",
   'pricing' => 'Narxlar',
   'blog' => 'Blog',
-  'contact' => 'Kontakt'
+  'contact' => 'Kontakt',
+  'readmore' => 'Ko\'proq o\'qish',
+  'welcome' => 'IT Livega hush kelibsiz'
 ];

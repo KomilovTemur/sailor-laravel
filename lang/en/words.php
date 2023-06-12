@@ -7,5 +7,7 @@ return [
   "portfolio" => "Portfolio",
   'pricing' => 'Pricing',
   'blog' => 'Blog',
-  'contact' => 'Contact'
+  'contact' => 'Contact',
+  'readmore' => 'read more',
+  'welcome' => 'Welcome to IT Live'
 ];
