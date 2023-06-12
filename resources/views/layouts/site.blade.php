@@ -33,19 +33,13 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href={{ route('index') }}>@lang('words.home')</a></li>
-          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href={{ route('about') }} class="active">About</a></li>
-              <li><a href={{ route('about') }}>Team</a></li>
-              <li><a href={{ route('about') }}>Testimonials</a></li>
-            </ul>
-          </li>
-          <li><a href={{ route('services') }}>Services</a></li>
-          <li><a href={{ route('portfolio') }}>Portfolio</a></li>
-          <li><a href={{ route('pricing') }}>Pricing</a></li>
-          <li><a href={{ route('blog') }}>Blog</a></li>
+          <li><a href={{ route('about') }}><span>@lang('words.about')</span></a></li>
+          <li><a href={{ route('services') }}>@lang('words.services')</a></li>
+          <li><a href={{ route('portfolio') }}>@lang('words.portfolio')</a></li>
+          <li><a href={{ route('pricing') }}>@lang('words.pricing')</a></li>
+          <li><a href={{ route('blog') }}>@lang('words.blog')</a></li>
 
-          <li><a href={{ route('contact') }}>Contact</a></li>
+          <li><a href={{ route('contact') }}>@lang('words.contact')</a></li>
           <li class="dropdown"><a href="#"><span class="text-uppercase">{{ session('lang') ?? 'UZ' }}</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
