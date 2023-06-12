@@ -32,7 +32,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href={{ route('index') }}>Home</a></li>
+          <li><a href={{ route('index') }}>@lang('words.home')</a></li>
           <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href={{ route('about') }} class="active">About</a></li>
@@ -65,7 +65,11 @@
               </li>
             </ul>
           </li>
-          <li><a href={{ route('index') }} class="getstarted">@lang('words.get_started')</a></li>
+          <li>
+            <a href={{ route('index') }} class="getstarted">
+              @lang('words.get_started')
+            </a>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

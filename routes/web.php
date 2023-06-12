@@ -7,7 +7,8 @@ use App\Http\Controllers\PhonesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
-
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\App;
 
 Route::get('/', [SiteController::class, 'index'])->name('index');
 Route::get('/about', [SiteController::class, 'about'])->name('about');
@@ -39,7 +40,11 @@ Route::prefix('admin')->name("admin.")->middleware('auth', 'checkadmin')->group(
 })->name('admin.');
 
 Route::get('/lang/{lang}', function ($lang) {
-    session(['lang' => $lang]);
+    if (! in_array($lang, ['en', 'uz', 'ru'])) {
+        abort(400);
+    }
+    session()->put('lang', $lang);
+    // App::setLocale($lang);
     return redirect()->back();
 })->name('lang');
 
