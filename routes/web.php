@@ -2,13 +2,12 @@
 
 use App\Http\Controllers\admin\CategoriesContoller;
 use App\Http\Controllers\admin\PostContoller;
+use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\PhonesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
-use GuzzleHttp\Psr7\Request;
-use Illuminate\Support\Facades\App;
 
 Route::get('/', [SiteController::class, 'index'])->name('index');
 Route::get('/about', [SiteController::class, 'about'])->name('about');
@@ -37,10 +36,11 @@ Route::prefix('admin')->name("admin.")->middleware('auth', 'checkadmin')->group(
     Route::resource('phones', PhonesController::class);
     Route::resource('posts', PostContoller::class);
     Route::resource('categories', CategoriesContoller::class);
+    Route::resource('service', ServiceController::class);
 })->name('admin.');
 
 Route::get('/lang/{lang}', function ($lang) {
-    if (! in_array($lang, ['en', 'uz', 'ru'])) {
+    if (!in_array($lang, ['en', 'uz', 'ru'])) {
         abort(400);
     }
     session()->put('lang', $lang);

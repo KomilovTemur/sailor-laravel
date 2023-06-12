@@ -19,4 +19,8 @@
     <a href="{{ route('admin.posts.index') }}" class="menu-toggle nav-link"><i data-feather="align-justify"></i><span>
         Posts</span></a>
   </li>
+  <li>
+    <a href="{{ route('admin.service.index') }}" class="menu-toggle nav-link"><i data-feather="compass"></i><span>
+        Services</span></a>
+  </li>
 </ul>
