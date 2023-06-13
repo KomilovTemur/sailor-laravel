@@ -46,7 +46,6 @@ Route::get('/lang/{lang}', function ($lang) {
         abort(400);
     }
     session()->put('lang', $lang);
-    // App::setLocale($lang);
     return redirect()->back();
 })->name('lang');
 
