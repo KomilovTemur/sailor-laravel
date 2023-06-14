@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\Login;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -23,12 +24,12 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request)#: RedirectResponse
     {
         $request->authenticate();
 
         $request->session()->regenerate();
-
+        Login::dispatch(auth()->user()->name);
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
